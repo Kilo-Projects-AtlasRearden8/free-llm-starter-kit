@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting Started with Local LLMs — Free LLM Starter Kit</title>
+<style>:root {
+  --ink: #1f2937;
+  --muted: #4b5563;
+  --bg: #ffffff;
+  --soft: #f3f4f6;
+  --border: #d1d5db;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  margin: 0;
+  line-height: 1.6;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header, footer, main, nav { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; }
+header {
+  background: var(--soft);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+header h1 { margin: 0 0 0.5rem; font-size: 1.75rem; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); font-size: 1rem; }
+nav {
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+}
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li { flex: 1 1 auto; min-width: 140px; }
+nav a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-right: 1px solid var(--border);
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-align: center;
+}
+nav a:hover { background: var(--soft); text-decoration: none; }
+main { padding: 2rem 1.25rem 4rem; }
+h1 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.35rem; }
+h2 { font-size: 1.25rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+h3 { font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.4rem; }
+p { margin: 0 0 1rem; }
+ul, ol { margin: 0.25rem 0 1rem 1.5rem; }
+li { margin: 0.25rem 0; }
+pre {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.9em; }
+pre code { font-size: 0.9em; padding: 0; background: transparent; }
+code:not(pre code) {
+  background: var(--soft);
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+th { background: var(--soft); }
+hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+blockquote {
+  border-left: 4px solid var(--border);
+  margin: 1rem 0;
+  padding: 0.5rem 1.25rem;
+  color: var(--muted);
+}
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.25rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+.small { font-size: 0.85rem; color: var(--muted); }
+@media (max-width: 600px) {
+  nav li { min-width: 100%; }
+  main { padding: 1rem 1rem 3rem; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Free LLM Starter Kit</h1>
+  <p>Run large language models on your own computer. No account, no API key.</p>
+</header>
+<nav>
+  <ul><li><a href="index.html">Home</a></li><li><a href="getting-started.html" aria-current="page">Getting Started</a></li><li><a href="model-cards.html">Model Cards</a></li><li><a href="ollama-cheatsheet.html">Ollama Setup Cheat Sheet</a></li><li><a href="prompt-starters.html">Prompt Starters</a></li><li><a href="privacy-basics.html">Privacy Basics</a></li></ul>
+</nav>
+
+<main>
+<h1 id="getting-started-with-local-llms">Getting Started with Local LLMs</h1>
+<h2 id="what-is-a-local-llm">What is a local LLM?</h2>
+<p>A large language model (LLM) is a program that reads and writes text in a way that feels conversational. Most people meet LLMs through websites that require an account and a subscription. A <strong>local LLM</strong> runs on your own computer instead. Nothing you type leaves your machine, and you never need an account or an API key.</p>
+<h2 id="why-run-models-locally">Why run models locally</h2>
+<ul><li><strong>Privacy:</strong> Your chats stay on your computer. They are not uploaded to a company's servers.</li><li><strong>No account needed:</strong> No signup, no email, no credit card.</li><li><strong>No per-token cost:</strong> Once a model is downloaded, using it is free.</li><li><strong>Works offline:</strong> After downloading a model, you can chat without internet access.</li><li><strong>You stay in control:</strong> You can delete a model anytime, and no one can change it out from under you.</li></ul>
+<h2 id="what-you-need">What you need</h2>
+<h3 id="computer">Computer</h3>
+<p>Any modern laptop or desktop will work. The main thing that matters is <strong>RAM</strong> (memory), not a fancy graphics card.</p>
+<table>
+<thead><tr><th>RAM</th><th>What you can run</th></tr></thead>
+<tbody>
+<tr><td>8 GB</td><td>Small models (1–3 billion parameters). Good for trying it out.</td></tr>
+<tr><td>16 GB</td><td>Medium models (7–8 billion parameters). Good for everyday writing and admin.</td></tr>
+<tr><td>32 GB+</td><td>Larger models (14–32 billion parameters). Better reasoning, slower on older machines.</td></tr>
+</tbody></table>
+<h3 id="disk-space">Disk space</h3>
+<p>Models are files. A small model is about 2–5 GB. A medium model is about 4–9 GB. Budget at least 20 GB of free space so you can try a few.</p>
+<h3 id="no-special-hardware-required">No special hardware required</h3>
+<p>You do not need a powerful GPU. Models run on your CPU, though a graphics card can make them faster. Start with what you have.</p>
+<h2 id="how-this-kit-works">How this kit works</h2>
+<ol><li><strong>Pick a model</strong> from <a href="model-cards.md">Model Cards</a> that fits your computer's RAM.</li><li><strong>Install Ollama</strong> using the <a href="ollama-cheatsheet.md">Ollama Setup Cheat Sheet</a>.</li><li><strong>Download and run</strong> your model with one command.</li><li><strong>Chat</strong> using a prompt from <a href="prompt-starters.md">Prompt Starters</a>.</li><li><strong>Read <a href="privacy-basics.md">Privacy Basics</a></strong> so you know exactly what stays on your machine.</li></ol>
+<h2 id="your-first-chat-in-plain-english">Your first chat, in plain English</h2>
+<p>Think of a local LLM as a very well-read assistant with no memory of your personal life unless you tell it something. You type a message (a <strong>prompt</strong>), the model reads it, and replies. The model does not "know" you, does not remember last week's chat unless you paste it back in, and cannot see your files unless you copy text into the chat window.</p>
+<h2 id="if-something-feels-hard">If something feels hard</h2>
+<p>You are not behind. Everyone starts with one command. If a step does not work, re-read it slowly, copy the command exactly, and try again. This kit is written for humans, not experts.</p>
+<hr>
+<p><em>Asdale Dynamics, LLC — beginner-friendly AI education. Credit: Asdale Dynamics, LLC.</em></p>
+</main>
+<footer>
+  <p class="small">Made by <strong>Asdale Dynamics, LLC</strong> — beginner-friendly AI education.<br>
+  Plain English, step by step, never condescending. Education only, never medical advice.<br>
+  <a href="https://dylanasdale.github.io" target="_blank" rel="noopener">dylanasdale.github.io</a> &middot;
+  <a href="LICENSE.html">MIT License &copy; 2026 Asdale Dynamics, LLC</a></p>
+</footer>
+</body>
+</html>

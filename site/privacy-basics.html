@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Basics for Local AI — Free LLM Starter Kit</title>
+<style>:root {
+  --ink: #1f2937;
+  --muted: #4b5563;
+  --bg: #ffffff;
+  --soft: #f3f4f6;
+  --border: #d1d5db;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  margin: 0;
+  line-height: 1.6;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header, footer, main, nav { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; }
+header {
+  background: var(--soft);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+header h1 { margin: 0 0 0.5rem; font-size: 1.75rem; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); font-size: 1rem; }
+nav {
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+}
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li { flex: 1 1 auto; min-width: 140px; }
+nav a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-right: 1px solid var(--border);
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-align: center;
+}
+nav a:hover { background: var(--soft); text-decoration: none; }
+main { padding: 2rem 1.25rem 4rem; }
+h1 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.35rem; }
+h2 { font-size: 1.25rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+h3 { font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.4rem; }
+p { margin: 0 0 1rem; }
+ul, ol { margin: 0.25rem 0 1rem 1.5rem; }
+li { margin: 0.25rem 0; }
+pre {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.9em; }
+pre code { font-size: 0.9em; padding: 0; background: transparent; }
+code:not(pre code) {
+  background: var(--soft);
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+th { background: var(--soft); }
+hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+blockquote {
+  border-left: 4px solid var(--border);
+  margin: 1rem 0;
+  padding: 0.5rem 1.25rem;
+  color: var(--muted);
+}
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.25rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+.small { font-size: 0.85rem; color: var(--muted); }
+@media (max-width: 600px) {
+  nav li { min-width: 100%; }
+  main { padding: 1rem 1rem 3rem; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Free LLM Starter Kit</h1>
+  <p>Run large language models on your own computer. No account, no API key.</p>
+</header>
+<nav>
+  <ul><li><a href="index.html">Home</a></li><li><a href="getting-started.html">Getting Started</a></li><li><a href="model-cards.html">Model Cards</a></li><li><a href="ollama-cheatsheet.html">Ollama Setup Cheat Sheet</a></li><li><a href="prompt-starters.html">Prompt Starters</a></li><li><a href="privacy-basics.html" aria-current="page">Privacy Basics</a></li></ul>
+</nav>
+
+<main>
+<h1 id="privacy-basics-for-local-ai">Privacy Basics for Local AI</h1>
+<h2 id="the-one-sentence-version">The one-sentence version</h2>
+<p>When you run a model locally, your chats stay on your computer. Nothing you type is uploaded to a company's servers, and no account or API key is needed.</p>
+<h2 id="why-local-is-private">Why local is private</h2>
+<p>Most popular AI tools work like this: you type a message, it travels over the internet to a company's computer, the company processes it, and sends back an answer. That means the company can see, store, and sometimes train on what you type.</p>
+<p>A <strong>local LLM</strong> works differently: the model is a file on your computer, and when you chat, your computer does all the work. The conversation never leaves your machine.</p>
+<h2 id="what-stays-on-your-machine">What stays on your machine</h2>
+<table>
+<thead><tr><th>Stays local</th><th>Leaves your computer</th></tr></thead>
+<tbody>
+<tr><td>The model file you downloaded</td><td>Nothing, if you are offline</td></tr>
+<tr><td>Every message you type</td><td>Nothing</td></tr>
+<tr><td>Every reply the model gives</td><td>Nothing</td></tr>
+<tr><td>Your chat history (until you delete it)</td><td>Nothing</td></tr>
+</tbody></table>
+<p>You can turn off Wi-Fi, unplug the ethernet cable, and keep chatting. That is the practical test of local AI: if it works without internet, your data is not going anywhere.</p>
+<h2 id="what-you-still-control">What you still control</h2>
+<ul><li><strong>Deleting chats:</strong> Clear your chat history anytime. In Ollama, start a new conversation or delete the model with <code>ollama rm &lt;model&gt;</code>.</li><li><strong>Deleting models:</strong> Remove a model and its file is gone from your disk.</li><li><strong>No hidden training:</strong> Local models do not send your chats back to improve someone else's product.</li></ul>
+<h2 id="what-local-ai-does-not-protect-you-from">What local AI does NOT protect you from</h2>
+<p>Local privacy is strong, but it is not magic:</p>
+<ul><li><strong>Shoulder surfing:</strong> Anyone who can see your screen can read your chats.</li><li><strong>Access to your computer:</strong> Anyone who can log into your user account can read your chat history and model files.</li><li><strong>Backups:</strong> If you back up your computer to a cloud service, your chat history may be included in that backup. Check your backup settings.</li><li><strong>Mistakes and bias:</strong> A local model can still make things up, get facts wrong, or repeat stereotypes from its training data. Treat output as a draft.</li><li><strong>Healthcare privacy:</strong> If you work in healthcare, running a model locally does not by itself make you HIPAA-compliant. Never paste real patient names, dates of birth, medical record numbers, or identifying details into any AI. These prompts are education only, never medical advice.</li></ul>
+<h2 id="safe-habits">Safe habits</h2>
+<ol><li><strong>Do not paste secrets.</strong> Passwords, credit card numbers, API keys, Social Security numbers, and other sensitive data do not belong in a chat — local or not.</li><li><strong>Do not paste real patient or client data.</strong> Use fake examples when practicing.</li><li><strong>Lock your computer</strong> when you step away, just like you would with any private document.</li><li><strong>Know where your backups go.</strong> If your chat folder syncs to the cloud, so do your chats.</li><li><strong>Verify important information.</strong> Local models hallucinate too. Double-check anything that affects money, health, or legal decisions.</li></ol>
+<h2 id="quick-privacy-check">Quick privacy check</h2>
+<p>Before you start a new chat, ask:</p>
+<ul><li>Am I offline right now? (Try it — the chat should still work.)</li><li>Am I pasting anything I would not want on a billboard?</li><li>Do I know how to delete this conversation when I am done?</li></ul>
+<p>If you can answer yes to all three, you are using local AI the way it was meant to be used: private, quiet, and under your control.</p>
+<hr>
+<p><em>Asdale Dynamics, LLC — beginner-friendly AI education. Credit: Asdale Dynamics, LLC. Education only, never medical advice.</em></p>
+</main>
+<footer>
+  <p class="small">Made by <strong>Asdale Dynamics, LLC</strong> — beginner-friendly AI education.<br>
+  Plain English, step by step, never condescending. Education only, never medical advice.<br>
+  <a href="https://dylanasdale.github.io" target="_blank" rel="noopener">dylanasdale.github.io</a> &middot;
+  <a href="LICENSE.html">MIT License &copy; 2026 Asdale Dynamics, LLC</a></p>
+</footer>
+</body>
+</html>
